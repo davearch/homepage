@@ -61,7 +61,7 @@ const styles = theme => ({
 
 class Header extends React.Component {
   render() {
-    const { classes, siteTitle, theme } = this.props
+    const { classes, siteTitle } = this.props
 
     return (
       <header className={classes.header}>
@@ -70,7 +70,7 @@ class Header extends React.Component {
             [classes.appBarShift]: this.props.open,
           })}
         >
-          <Toolbar disableGutters={!this.props.open} gutterBottom>
+          <Toolbar disableGutters={!this.props.open}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -82,7 +82,7 @@ class Header extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h3" className={classes.headerText}>
+            <Typography variant="h4" className={classes.headerText}>
               <Link
                 to="/"
                 style={{
@@ -120,7 +120,6 @@ class Header extends React.Component {
 Header.propTypes = {
   siteTitle: PropTypes.string,
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
 }
 
 Header.defaultProps = {

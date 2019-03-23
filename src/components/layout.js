@@ -39,7 +39,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    //marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
@@ -49,8 +49,6 @@ const styles = theme => ({
     marginLeft: 0,
   },
 })
-
-const drawerWidth = 240
 
 class Layout extends React.Component {
   state = {
@@ -80,38 +78,36 @@ class Layout extends React.Component {
           }
         `}
         render={data => (
-          <>
-            <MuiThemeProvider theme={theme}>
-              <Header
-                siteTitle={data.site.siteMetadata.title}
-                handleDrawerOpen={this.handleDrawerOpen}
-                handleDrawerClose={this.handleDrawerClose}
-                open={this.state.open}
-              />
-              <div
-                style={{
-                  margin: `0 auto`,
-                  maxWidth: 960,
-                  padding: `0px 1.0875rem 1.45rem`,
-                  paddingTop: 0,
-                }}
+          <MuiThemeProvider theme={theme}>
+            <Header
+              siteTitle={data.site.siteMetadata.title}
+              handleDrawerOpen={this.handleDrawerOpen}
+              handleDrawerClose={this.handleDrawerClose}
+              open={this.state.open}
+            />
+            <div
+              style={{
+                margin: `0 auto`,
+                maxWidth: 960,
+                padding: `0px 1.0875rem 1.45rem`,
+                paddingTop: 0,
+              }}
+            >
+              <main
+                className={classNames(classes.content, {
+                  [classes.contentShift]: open,
+                })}
               >
-                <main
-                  className={classNames(classes.content, {
-                    [classes.contentShift]: open,
-                  })}
-                >
-                  <div className={classes.drawerHeader} />
-                  {this.props.children}
-                </main>
-                <footer>
-                  © {new Date().getFullYear()}, Built with
-                  {` `}
-                  <a href="https://www.gatsbyjs.org">Gatsby</a>
-                </footer>
-              </div>
-            </MuiThemeProvider>
-          </>
+                <div className={classes.drawerHeader} />
+                {this.props.children}
+              </main>
+              <footer>
+                © {new Date().getFullYear()}, Built with
+                {` `}
+                <a href="https://www.gatsbyjs.org">Gatsby</a>
+              </footer>
+            </div>
+          </MuiThemeProvider>
         )}
       />
     )
